@@ -1,0 +1,33 @@
+/* Reset values */
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  /* General set-up */
+  
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-family: "Orbitron", sans-serif;
+    color: black;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    background: #87969d no-repeat center top;
+    background-size: 100vw 100vh;
+    overflow-x: hidden;
+  }
+
+  #display {
+      text-align: center;
+  }
