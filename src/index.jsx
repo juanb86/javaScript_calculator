@@ -6,8 +6,7 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: "",
-      calc: [],
+      calc: [0],
       result: 0,
     };
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -19,22 +18,20 @@ class Calculator extends React.Component {
 
   onKeyDown(e) {
     const key = e.key.toLowerCase();
+    console.log(key);
+    const calc = this.state.calc;
+    const lastNumber = calc[calc.length - 1];
     //KEY ENTERED IS A NUMBER?
     if (!isNaN(key)) {
-      const newNumber = this.state.number * 10 + Number(key);
-      this.setState({ number: newNumber });
+      const newNumber = lastNumber * 10 + Number(key);
+      this.setState({ calc: calc.slice(0, calc.length - 1).concat(newNumber) });
     }
     //KEY ENTERED IS AN OPERATOR?
     else if (key === "+" || key === "-" || key === "*" || key === "/") {
-      const pushing = [this.state.number, key];
-      this.setState({ calc: this.state.calc.concat(pushing) });
-      this.setState({ number: 0 });
-      console.log(this.state.calc);
+      this.setState({ calc: this.state.calc.concat([key, 0]) });
     }
     //KEY ENTERED IS EQUAL?
     else if (key === "=") {
-      this.setState({ calc: this.state.calc.concat(this.state.number) });
-      const calc = this.state.calc;
       let result = calc[0];
       for (let i = 1; i < calc.length; i = i + 2) {
         switch (calc[i]) {
@@ -52,7 +49,12 @@ class Calculator extends React.Component {
             break;
         }
       }
-      this.setState({ number: result, result: result });
+      this.setState({ calc: [result] });
+    } else if (key === "backspace") {
+      const newNumber = lastNumber / 10;
+      this.setState({
+        calc: calc.slice(0, calc.length - 1).concat(newNumber),
+      });
     }
   }
 
@@ -63,7 +65,7 @@ class Calculator extends React.Component {
         <div id="one"></div>
         <div id="add"></div>
         <div id="decimal"></div>
-        <div id="display">{this.state.number}</div>
+        <div id="display">{this.state.calc.join(" ")}</div>
       </div>
     );
   }
