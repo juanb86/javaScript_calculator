@@ -100,12 +100,22 @@ function calcAlgo(calc, key) {
     const finalResult = Number(result.toPrecision(9));
     return [finalResult.toString()];
   }
-  //KEY ENTERED IS BACKSPACE?
-  else if (key === "backspace") {
-  }
   //KEY ENTERED IS CLEAR OR SUPR?
   else if (key === "AC" || key === "delete") {
     return ["0"];
+  }
+  //KEY ENTERED IS BACKSPACE?
+  else if (key === "backspace") {
+    if (calc.length > 1 && lastNumber.length === 1) {
+      const newCalc = calc.slice(0, calc.length - 1);
+      return newCalc;
+    } else if (lastNumber.length > 1) {
+      const newNumber = lastNumber.slice(0, lastNumber.length - 1);
+      const newCalc = calc.slice(0, calc.length - 1).concat(newNumber);
+      return newCalc;
+    } else {
+      return ["0"];
+    }
   }
   return calc;
 }
@@ -128,6 +138,7 @@ const KEYS = [
   { id: "divide", content: "/" },
   { id: "clear", content: "AC" },
   { id: "equals", content: "=" },
+  { id: "backspace", content: "backspace" },
 ];
 
 // ========================================
