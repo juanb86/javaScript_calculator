@@ -78,6 +78,7 @@ body {
   border: 0.1rem solid #13110e;
   padding-right: 2rem;
   overflow: hidden;
+  word-spacing: -0.8rem;
 }
 
 #zero {
