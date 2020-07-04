@@ -33,14 +33,12 @@ class Calculator extends React.Component {
     const display = this.state.calc.join(" ");
     return (
       <div id="main-container">
-        <div id="keys">
-          {KEYS.map((e) => (
-            <div key={e.id} id={e.id} onClick={this.onKeyClick}>
-              {e.content}
-            </div>
-          ))}
-        </div>
         <div id="display">{display}</div>
+        {KEYS.map((e) => (
+          <div key={e.id} className="btn" id={e.id} onClick={this.onKeyClick}>
+            {e.content}
+          </div>
+        ))}
       </div>
     );
   }
@@ -105,7 +103,7 @@ function calcAlgo(calc, key) {
     return ["0"];
   }
   //KEY ENTERED IS BACKSPACE?
-  else if (key === "backspace") {
+  else if (key === "backspace" || key === "B") {
     if (calc.length > 1 && lastNumber.length === 1) {
       const newCalc = calc.slice(0, calc.length - 1);
       return newCalc;
@@ -138,7 +136,7 @@ const KEYS = [
   { id: "divide", content: "/" },
   { id: "clear", content: "AC" },
   { id: "equals", content: "=" },
-  { id: "backspace", content: "backspace" },
+  { id: "backspace", content: "B" },
 ];
 
 // ========================================

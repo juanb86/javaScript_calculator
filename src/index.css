@@ -1,33 +1,136 @@
 /* Reset values */
 
 * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-  
-  /* General set-up */
-  
-  html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-  }
-  
-  body {
-    font-family: "Orbitron", sans-serif;
-    color: black;
-    font-size: 1.6rem;
-    line-height: 1.2;
-    background: #87969d no-repeat center top;
-    background-size: 100vw 100vh;
-    overflow-x: hidden;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  #display {
-      text-align: center;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* General set-up */
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Electrolize", sans-serif;
+  color: black;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  background: #5d6d5d no-repeat center top;
+  background-size: 100vw 100vh;
+  overflow-x: hidden;
+}
+
+#main-container {
+  display: grid;
+  margin: 4rem auto;
+  grid-gap: 0.5rem 0.5rem;
+  grid-template-areas:
+    "display display display display"
+    "clear divide multiply backspace"
+    "seven eight nine subtract"
+    "four five six add"
+    "one two three equals"
+    "zero zero decimal equals";
+  grid-template-columns: 6rem 6rem 6rem 6rem;
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem;
+  width: 30rem;
+  height: 42rem;
+  background: #89847a;
+  border: 0.1rem solid #13110e;
+  justify-content: center;
+  align-content: center;
+}
+
+.btn {
+  background: #13110e;
+  border: 0.1rem solid #5d6d5d;
+  color: #c5c9c4;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 100ms;
+}
+
+.btn:hover {
+  background: #312f2d;
+}
+
+.btn:active {
+  background: #ce291b;
+}
+
+#display {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  grid-area: display;
+  background: #ce291b;
+  border: 0.1rem solid #13110e;
+  padding-right: 2rem;
+  overflow: hidden;
+}
+
+#zero {
+  grid-area: zero;
+}
+#one {
+  grid-area: one;
+}
+#two {
+  grid-area: two;
+}
+#three {
+  grid-area: three;
+}
+#four {
+  grid-area: four;
+}
+#five {
+  grid-area: five;
+}
+#six {
+  grid-area: six;
+}
+#seven {
+  grid-area: seven;
+}
+#eight {
+  grid-area: eight;
+}
+#nine {
+  grid-area: nine;
+}
+#decimal {
+  grid-area: decimal;
+}
+#add {
+  grid-area: add;
+}
+#subtract {
+  grid-area: subtract;
+}
+#multiply {
+  grid-area: multiply;
+}
+#divide {
+  grid-area: divide;
+}
+#clear {
+  grid-area: clear;
+}
+#equals {
+  grid-area: equals;
+}
+#backspace {
+  grid-area: backspace;
+}
